@@ -10,7 +10,7 @@ const incomeRouter = require("./routes/incomeRoutes")
 const expenseRouter = require("./routes/expenseRoutes")
 const dashboardRouter = require("./routes/dashboardRoutes")
 app.use(cors({
-    origin: "http://localhost:5174",
+    origin: process.env.FRONTEND_URL,
     credentials: true
 }))
 app.use(express.json())
