@@ -16,9 +16,7 @@ const __dirname = path.dirname(__filename);
 
 // Parse FRONTEND_URL — supports comma-separated origins
 const allowedOrigins = process.env.FRONTEND_URL
-  ? process.env.FRONTEND_URL.split(",").map((o) => o.trim())
-  : ["http://localhost:5173"];
-
+  
 app.use(
   cors({
     origin: allowedOrigins,
@@ -33,7 +31,7 @@ connectDb();
 
 const PORT = process.env.PORT || 8000;
 
-// ─── Routes ───────────────────────────────────────────────────────────────────
+
 app.use("/api/auth", authRouter);
 app.use("/api/files", fileRouter);
 app.use("/api/vitals", vitalsRouter);
