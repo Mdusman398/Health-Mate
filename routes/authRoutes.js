@@ -11,10 +11,8 @@ router.post("/logout", logout);
 // router.get("/getUser/:id", auth, getUserInfo);
 // router.put('/update', auth, upload.single('profile'), updateProfile);
 
-router.get("/getbackend", (req, res) => {
-    res.send({
-        message: "get api from backend"
-    });
+router.get("/me", auth, (req, res) => {
+  res.send({ user: req.user });
 });
 
 export default router;

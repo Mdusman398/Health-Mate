@@ -62,14 +62,18 @@ export const loginUser = async (req, res) => {
     res
       .status(500)
       .send({ message: "internal error during login", err: err.message });
-    }
-  };
-  
-  export const logout = async (req, res) => {
-    try {
-      res.cookie("token", "");
-      res.send({ message: "logout successfully" });
-    } catch (err) {
-      res.send({ message: "internal err during logout", err: err.message });
-    }
-  };
+  }
+};
+
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
+    res.send({ message: "logout successfully" });
+  } catch (err) {
+    res.send({ message: "internal err during logout", err: err.message });
+  }
+};
